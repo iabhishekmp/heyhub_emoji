@@ -1,0 +1,26 @@
+#? flutter --version                                                                                                       ─╯
+# Flutter 3.19.0 • channel stable • https://github.com/flutter/flutter.git
+# Framework • revision bae5e49bc2 (3 days ago) • 2024-02-13 17:46:18 -0800
+# Engine • revision 04817c99c9
+# Tools • Dart 3.3.0 • DevTools 2.31.1
+
+name: heyhub_emoji
+description: "A Emoji package for heyhub."
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  dio: ^5.4.0
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^5.1.0
+
+flutter:
