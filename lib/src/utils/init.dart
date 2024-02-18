@@ -28,9 +28,10 @@ Future<bool> init(Infrastructure infra) async {
     //   );
     //   return false;
     case final List<HHEmojiCategory> emojis:
+      log('${emojis.length}');
       return true;
     case final list:
-      log('Error in Isolate: $list');
+      log('Error in Isolate:\n $list');
       return false;
   }
 }
