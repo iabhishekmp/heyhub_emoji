@@ -2,4 +2,4 @@
 library heyhub_emoji;
 
 export 'src/data/infrastructure/infrastructure.dart';
-export 'src/utils/init.dart';
+export 'src/heyhub_emoji.dart' show HeyhubEmoji;

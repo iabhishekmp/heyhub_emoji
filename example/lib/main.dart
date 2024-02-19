@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:heyhub_emoji/heyhub_emoji.dart';
 
 void main() async {
-  await init(GithubInfra());
+  await HeyhubEmoji.init(GithubInfra());
   runApp(const MyApp());
 }
 
@@ -32,6 +32,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final List<String> messages = [];
   final _controller = TextEditingController();
+  final _textFieldFocusNode = FocusNode();
 
   Future<void> _sendMsg(String msg) async {
     if (msg.isEmpty) return;
@@ -66,13 +67,21 @@ class _MyHomePageState extends State<MyHomePage> {
           Row(
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () async {
+                  _textFieldFocusNode.unfocus();
+                  final emoji = await HeyhubEmoji.showEmojiDialog(context);
+                  if (emoji != null) {
+                    _controller.text = _controller.text + emoji;
+                  }
+                  _textFieldFocusNode.requestFocus();
+                },
                 icon: const Icon(Icons.emoji_emotions),
               ),
               Expanded(
                 child: TextFormField(
                   decoration:
                       const InputDecoration(hintText: 'Type new message'),
+                  focusNode: _textFieldFocusNode,
                   controller: _controller,
                 ),
               ),
