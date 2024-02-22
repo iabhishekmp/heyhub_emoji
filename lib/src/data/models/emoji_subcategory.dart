@@ -35,7 +35,7 @@ class HHEmojiSubcategory {
     return HHEmojiSubcategory(
       name: map['name'] as String,
       emojis: List<HHEmoji>.from(
-        (map['emojis'] as List<int>).map<HHEmoji>(
+        (map['emojis'] as List).map<HHEmoji>(
           (x) => HHEmoji.fromMap(x as Map<String, dynamic>),
         ),
       ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:heyhub_emoji/heyhub_emoji.dart';
 
 void main() async {
+  //? this is necessary !!
+  WidgetsFlutterBinding.ensureInitialized();
   await HeyhubEmoji.init(GithubInfra());
   runApp(const MyApp());
 }
@@ -34,9 +36,11 @@ class _MyHomePageState extends State<MyHomePage> {
   final _controller = TextEditingController();
   final _textFieldFocusNode = FocusNode();
 
-  Future<void> _sendMsg(String msg) async {
+  Future<void> _sendMsg() async {
+    final msg = _controller.text;
     if (msg.isEmpty) return;
     setState(() => messages.add(msg));
+    _controller.clear();
   }
 
   @override
@@ -86,10 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               IconButton(
-                onPressed: () {
-                  _sendMsg(_controller.text);
-                  _controller.clear();
-                },
+                onPressed: _sendMsg,
                 icon: const Icon(Icons.send),
               ),
             ],
